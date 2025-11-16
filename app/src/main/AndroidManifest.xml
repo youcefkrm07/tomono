@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.aline.studioapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS"/>
+
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".App"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppMocker"
+        tools:targetApi="31">
+
+        <!-- Launcher -->
+        <activity
+            android:name="com.aline.studioapp.HomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name="com.aline.studioapp.general.UploadApkActivity"
+            android:theme="@style/Theme.AppMocker" />
+
+        <activity android:name="com.aline.studioapp.general.UploadedApksActivity" />
+        <activity android:name="com.aline.studioapp.general.SecondaryActivity.ManageApkActivity" />
+
+
+        <activity android:name="com.aline.studioapp.general.AboutActivity" />
+
+
+
+
+        <!-- Feature Activities
+     //   <activity android:name=".HookInjectorActivity" />
+     //   <activity android:name=".HookSelectionActivity" />
+        <activity android:name=".BuildPropEditorActivity" />
+
+        -->
+
+        <service
+            android:name="com.aline.studioapp.firebase.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+
+
+        <!-- ✅ FileProvider config -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.aline.studioapp.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+
+</manifest>
